@@ -1,4 +1,4 @@
-<template>
+<template xmlns="http://www.w3.org/1999/html">
   <div>
     <div>
       <el-row type="flex" class="row-bg" justify="space-around">
@@ -21,14 +21,29 @@
 
 
         <el-col :span="4">
-<!--          <div>-->
-<!--            <el-button type="info" plain style="float: left;margin-left: 80px;margin-top: 100px">单报文解析</el-button>-->
-<!--            <el-button type="info" plain style="float: right;margin-right: 80px;margin-top: 100px">多报文解析</el-button>-->
-<!--          </div>-->
+
+          <h1>充电桩报文解析器 V1.4 </h1>
+          <el-popover
+            placement="top-start"
+            title="作者:肖俊贤 "
+            width="200"
+            trigger="hover"
+            >
+            <div>
+              <p>有任何问题请联系微信：</p>
+              <img :src="img"  height="200" width="200"/>
+            </div>
+
+            <el-link slot="reference" icon="el-icon-edit">Designed By XJX</el-link>
+
+<!--            <el-button slot="reference">hover 激活</el-button>-->
+          </el-popover>
+          <div>
           <template>
             <el-radio v-model="multiFlag" label="0" style="margin-top: 100px;margin-left: 30px">单报文解析</el-radio>
             <el-radio v-model="multiFlag" label="1" style="margin-top: 100px">多报文解析</el-radio>
           </template>
+          </div>
           <div>
             <el-button style="margin: auto;margin-top: 150px;width: 235px" type="primary" plain @click="getTextArea2('SH_V16')">盛宏V16</el-button>
 <!--            <el-button style="margin: auto;margin-top: 50px;width: 235px" type="primary" plain @click="v16sh202click">盛宏V16协议CMD202报文解析</el-button>-->
@@ -62,11 +77,16 @@
 
 
     </div>
-
+    <template>
+      <el-backtop target=".page-component__scroll .el-scrollbar__wrap"></el-backtop>
+    </template>
   </div>
+
 </template>
 
 <script>
+
+import img from "../assets/weixin.jpg";
 export default {
   name: 'DataGram',
   data() {
@@ -74,7 +94,8 @@ export default {
       msg: 'Welcome to Your Vue.js App',
       textarea1: '',
       textarea2: '',
-      multiFlag: '0'
+      multiFlag: '0',
+      img: img
     }
   },
   methods: {
