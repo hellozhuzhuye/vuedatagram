@@ -14,6 +14,11 @@ export default new Router({
         component: DataGram
       },
       {
+        path: '/DataGram',
+        name: 'DataGram',
+        component: DataGram
+      },
+      {
         path: '/HlhtDecrypt',
         name: 'HlhtDecrypt',
         component: HlhtDecrypt
