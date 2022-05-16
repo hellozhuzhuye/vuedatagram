@@ -34,7 +34,7 @@ axios.interceptors.response.use(success => {
     return;
 })
 
-let base = 'http://127.0.0.1:8080';
+let base = 'http://192.168.1.115:5101';
 
 export const postKeyValueRequest = (url, params) => {
     return axios({
