@@ -4,12 +4,16 @@ import router from '../router'
 // import {mymessage} from '@/utils/mymessage';
 
 axios.interceptors.response.use(success => {
-    if (success.status && success.status == 200 && success.data.status == 500) {
+    if (success.status && success.status === 200 && success.data.status === 500) {
         Message.error({message: success.data.msg})
         return;
     }
-    if (success.data.msg) {
+    if (success.data.msg && success.data.code === 1000) {
         Message.success({message: success.data.msg})
+    }
+    if (success.data.msg && success.data.code !== 1000){
+        Message.error({message: success.data.msg})
+        return;
     }
     return success.data;
 }, error => {
