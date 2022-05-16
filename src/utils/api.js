@@ -30,7 +30,7 @@ axios.interceptors.response.use(success => {
     return;
 })
 
-let base = 'http://smartsoftware.top:8080';
+let base = 'http://127.0.0.1:8080';
 
 export const postKeyValueRequest = (url, params) => {
     return axios({

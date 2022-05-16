@@ -64,7 +64,7 @@
                 <el-input
                   autosize="true"
                   type="textarea"
-                  readonly="true"
+                  :readonly=true
                   placeholder="解析后的报文数据"
                   :autosize="{ minRows: 45, maxRows: 45 }"
                   v-model="textarea2">
