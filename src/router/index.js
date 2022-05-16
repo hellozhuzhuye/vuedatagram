@@ -9,7 +9,7 @@ export default new Router({
     mode: 'history',
     routes: [
       {
-        path: '/DataGram',
+        path: '/',
         name: 'DataGram',
         component: DataGram
       },
