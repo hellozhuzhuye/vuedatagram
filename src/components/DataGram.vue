@@ -22,7 +22,7 @@
 
         <el-col :span="4">
 
-          <h1>充电桩报文解析器 V1.4 </h1>
+          <h1>充电桩报文解析器 V1.5 </h1>
           <el-popover
             placement="top-start"
             title="作者:肖俊贤 "

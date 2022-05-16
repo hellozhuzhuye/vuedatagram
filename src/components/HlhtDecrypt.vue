@@ -11,7 +11,7 @@
               <el-input
                 type="textarea"
                 autosize="true"
-                placeholder="请粘贴报文并点击右方相应按钮进行解析"
+                placeholder="请粘贴加密数据并点击按钮进行解密"
                 :autosize="{ minRows: 45, maxRows: 45 }"
                 v-model="textarea1">
               </el-input>
@@ -22,7 +22,7 @@
 
         <el-col :span="4">
 
-          <h1>互联互通数据解析器 V1.4 </h1>
+          <h1>互联互通数据解析器 V1.5 </h1>
           <el-popover
             placement="top-start"
             title="作者:肖俊贤 "
@@ -78,7 +78,7 @@
                 autosize="true"
                 type="textarea"
                 :readonly=true
-                placeholder="解析后的报文数据"
+                placeholder="解密后的数据"
                 :autosize="{ minRows: 45, maxRows: 45 }"
                 v-model="textarea2">
               </el-input>
