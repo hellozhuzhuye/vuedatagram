@@ -34,7 +34,7 @@ axios.interceptors.response.use(success => {
     return;
 })
 
-let base = 'http://192.168.1.115:5101';
+let base = 'http://i100c.3322.org:5101';
 
 export const postKeyValueRequest = (url, params) => {
     return axios({

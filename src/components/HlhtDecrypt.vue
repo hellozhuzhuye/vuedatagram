@@ -5,13 +5,13 @@
         <el-col :span="10">
           <el-card style="display: inline-block;width: 100%;border: 0;margin-left: 10px" class="box-card">
             <div slot="header" class="clearfix">
-              <span>加密数据</span>
+              <span>解密/加密前数据</span>
               <!--          <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>-->
               <div style="margin: 20px 0;"></div>
               <el-input
                 type="textarea"
                 autosize="true"
-                placeholder="请粘贴加密数据并点击按钮进行解密"
+                placeholder="请粘贴数据并点击按钮进行解密或加密"
                 :autosize="{ minRows: 45, maxRows: 45 }"
                 v-model="textarea1">
               </el-input>
@@ -63,7 +63,8 @@
                 clearable>
               </el-input>
             </div>
-            <el-button style="margin: auto;margin-top: 150px;width: 235px" type="primary" plain @click="getHlhtDecrypt">解析</el-button>
+            <el-button style="margin: auto;margin-top: 150px;width: 235px" type="primary" plain @click="getHlhtDecrypt">解密</el-button>
+            <el-button style="margin: auto;margin-top: 20px;width: 235px" type="success" plain @click="getHlhtEncrypt">加密</el-button>
           </div>
 
 
@@ -71,14 +72,14 @@
         <el-col :span="10">
           <el-card style="display: inline-block;width: 100%;margin-right: 10px" class="box-card">
             <div slot="header" class="clearfix">
-              <span>解密数据</span>
+              <span>解密/加密后数据</span>
               <!--          <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>-->
               <div style="margin: 20px 0;"></div>
               <el-input
                 autosize="true"
                 type="textarea"
                 :readonly=true
-                placeholder="解密后的数据"
+                placeholder="加密或解密后的数据"
                 :autosize="{ minRows: 45, maxRows: 45 }"
                 v-model="textarea2">
               </el-input>
@@ -127,7 +128,7 @@ export default {
     },
     getHlhtDecrypt(){
       if (this.value===-1){
-        this.postRequest("/hlhtDecrypt/getHlhtDecrypt", {'platformId':this.value,'encryptionData':this.textarea1,'dataSecret':this.dataSecretInput,'dataSecretIv':this.dataSecretIvInput}).then(resp => {
+        this.postRequest("/hlhtDecrypt/getHlhtDecrypt", {'platformId':this.value,'data':this.textarea1,'dataSecret':this.dataSecretInput,'dataSecretIv':this.dataSecretIvInput}).then(resp => {
             if (resp) {
               console.log(resp)
               this.textarea2 = resp.data
@@ -135,7 +136,26 @@ export default {
           }
         )
       }else {
-        this.postRequest("/hlhtDecrypt/getHlhtDecrypt", {'platformId':this.value,'encryptionData':this.textarea1}).then(resp => {
+        this.postRequest("/hlhtDecrypt/getHlhtDecrypt", {'platformId':this.value,'data':this.textarea1}).then(resp => {
+            if (resp) {
+              console.log(resp)
+              this.textarea2 = resp.data
+            }
+          }
+        )
+      }
+    },
+    getHlhtEncrypt(){
+      if (this.value===-1){
+        this.postRequest("/hlhtDecrypt/getHlhtEncrypt", {'platformId':this.value,'data':this.textarea1,'dataSecret':this.dataSecretInput,'dataSecretIv':this.dataSecretIvInput}).then(resp => {
+            if (resp) {
+              console.log(resp)
+              this.textarea2 = resp.data
+            }
+          }
+        )
+      }else {
+        this.postRequest("/hlhtDecrypt/getHlhtEncrypt", {'platformId':this.value,'data':this.textarea1}).then(resp => {
             if (resp) {
               console.log(resp)
               this.textarea2 = resp.data
